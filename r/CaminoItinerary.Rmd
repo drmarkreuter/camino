@@ -1,0 +1,1077 @@
+---
+title: "Camino Itinerary"
+author: "Mark Reuter"
+date: '2024-02-13'
+output: html_document
+---
+
+<!-- https://www.caminosantiagocompostela.com/camino-frances-route/ -->
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(leaflet)
+
+#### functions ####
+mapFunction <- function(lat,long){
+  simplemap <- leaflet()
+  simplemap <- addTiles(simplemap)
+  simplemap <- addMarkers(simplemap,
+                          lng=long,
+                          lat=lat,
+                          #popup= "Starting Coord",
+                          #label = "Starting Coord",
+                          #icon = homeIcon,
+                          labelOptions = labelOptions(noHide = TRUE))
+  return(simplemap)
+}
+
+doubleMarkerMapFunction <- function(lat, long, lat2, long2){
+  doublemap <- leaflet()
+  doublemap <- addTiles(doublemap)
+  doublemap <- addMarkers(doublemap,
+                          lng=long,
+                          lat=lat,
+                          #popup= "Starting Coord",
+                          label = "Start",
+                          #icon = homeIcon,
+                          labelOptions = labelOptions(noHide = TRUE))
+  doublemap <- addMarkers(doublemap,
+                          lng=long2,
+                          lat=lat2,
+                          #popup= "Starting Coord",
+                          label = "End",
+                          #icon = homeIcon,
+                          labelOptions = labelOptions(noHide = TRUE))
+  return(doublemap)
+}
+
+tripleMarkerMapFunction <- function(lat, long, lat2, long2, lat3, long3){
+  triplemap <- leaflet()
+  triplemap <- addTiles(triplemap)
+  triplemap <- addMarkers(triplemap,
+                          lng=long,
+                          lat=lat,
+                          #popup= "Starting Coord",
+                          label = "Start",
+                          #icon = homeIcon,
+                          labelOptions = labelOptions(noHide = TRUE))
+  triplemap <- addMarkers(triplemap,
+                          lng=long2,
+                          lat=lat2,
+                          #popup= "Starting Coord",
+                          label = "midway",
+                          #icon = homeIcon,
+                          labelOptions = labelOptions(noHide = TRUE))
+  triplemap <- addMarkers(triplemap,
+                          lng=long3,
+                          lat=lat3,
+                          #popup= "Starting Coord",
+                          label = "End",
+                          #icon = homeIcon,
+                          labelOptions = labelOptions(noHide = TRUE))
+  return(triplemap)
+}
+
+```
+
+# Full Itinerary 715 km (approx 14 miles per day)
+### Transit to Spain
+#### London Stansted (13:50) to Zaragoza (17:05) (2024/04/26)
+#### Zaragoza (11:06) to Pamplona (13:05) (2024/04/27)
+
+### Leg 1 - 24 km
+
+#### Day 1 - Pamplona to Puente la Reina - 24 km (2024/04/28)
+### Leg 2 - 22 km
+#### Day 2 - Puenta la Reina to Estella - 22 km (2024/04/29)
+### Leg 3 - 50 km
+#### Day 3 - Estella to Los Arcos 22 km (2024/04/30)
+#### Day 4 - Los Arcos to Logrono 28 km (2024/05/01)
+### Leg 4 - 125 km
+#### Day 5 - Logrono to Nájera 30 km (2024/05/02)
+#### Day 6 - Nájera to Santo Domingo de la Calzada 21 km (2024/05/03)
+#### Day 7 - Santo Domingo de la Calzada to Belorado 23 km (2024/05/04)
+#### Day 8 - Belorado to San Juan de Ortega 24 km (2024/05/05)
+#### Day 9 - San Juan de Ortega to Buros 27 km (2024/05/06)
+### Leg 5 - 184 km
+#### Day 10 - Burgos to Hontanas 32 km (2024/05/07)
+#### Day 11 - Hontanas to Boadilla del Camino 29 km (2024/05/08)
+#### Day 12 - Boadilla del Camino to Carrión de los Condes 26 km (2024/05/09)
+#### Day 13 - Carrión de los Condes to Terradillos de los Templarios 27 km (2024/05/10)
+#### Day 14 - Terradillos de los Templarios to Bercianos del Real Camino 24 km (2024/05/11)
+#### Day 15 - Bercianos del Real Camino to Mansilla de las Mulas 27 km (2024/05/12)
+#### Day 16 - Mansilla de las Mulas to León 19 km (2024/05/13)
+### Leg 6 - 50 km
+#### Day 17 - Leon to Villadangos del Páramo 21 km (2024/05/14)
+#### Day 18 - Villadangos del Páramo to Astorga 29 km (2024/05/15)
+#### Day 19 - Rest day in Astorga (2024/05/16)
+### Leg 7 - 167 km
+#### Day 20 - Astorga to Rabanal del Camino 20 km (2024/05/17)
+#### Day 21 - Rabanal del Camino to Molinaseca 25 km (2024/05/18)
+#### Day 22 - Molinaseca to Villafranca del Bierzo 32 km (2024/05/19)
+#### Day 23 - Villafranca del Bierzo to O Cebreiro 28 km (2024/05/20)
+#### Day 24 - O Cebreiro to Triacastela 21 km (2024/05/21)
+#### Day 25 - Triacastela to Sarria 19 km (2024/05/22)
+#### Day 26 - Sarria to Portomarín 22 km (2024/05/23)
+### Leg 8 - 93 km
+#### Day 27 - Portomarín to Palas de Rei 25 km (2024/05/24)
+#### Day 28 - Palas de Rei to Melide 15 km (2024/05/25)
+#### Day 29 - Melide to Arzúa 14 km (2024/05/26)
+#### Day 30 - Arzúa to Pedrouzo 19 km (2024/05/27)
+#### Day 31 - Pedrouzo to Santiago de Compostela 20 km (2024/05/28)
+#### Day 32 - Rest day or transit (2024/05/29)
+
+
+### Flight from Santiago to xxx 2024/05/30
+
+## Zaragosa
+
+### Hotel Paris Centro, C. de San Pablo, 19, Casco Antiguo, 50003 Zaragoza, Spain
+[Hotel Paris Centro](https://maps.app.goo.gl/NcyLKZd5FhevnLvJA)
+
+```{r zaragosa, echo=FALSE}
+hotelpariscentroLat <- 41.65558963141877
+hotelpariscentroLong <- -0.8847546320320065
+zara <- mapFunction(hotelpariscentroLat,
+                    hotelpariscentroLong)
+zara
+
+```
+
+
+# Leg 1 Pamplona to Puente la Reina - 24 km
+
+### Pamplona to Puente la Reina 24 km (15 m), rolling hills
+
+## Pamplona
+### Albergue Jesus y Maria C. de la Compañía, 4, 31001 Pamplona, Navarra, Spain
+[Albergue Jesus y Maria](https://maps.app.goo.gl/TpqQbmm41fEBi7ou5)
+
+```{r coord, echo=FALSE}
+PamplomaHostelLat <- 42.818951
+PamplomaHostelLong <- -1.641751
+
+PuentelaReinaLat <- 42.67220603137471
+PuentelaReinaLong <- -1.8121066116168143
+
+EstellaLat <- 42.67000344803912
+EstellaLong <- -2.0274108652911202
+
+LosArcosLat <- 42.569192091819644
+LosArcosLong <- -2.194411176424429
+
+LogronoLat <- 42.46831622437214
+LogronoLong <- -2.444750263441197
+
+BurgosLat <- 42.342478404175644
+BurgosLong <- -3.703840141019459
+
+LeonLat <- 42.59500116946184
+LeonLong <- -5.568238657114206
+
+AstorgaLat <- 42.45312258716735
+AstorgaLong <- -6.051251641448496
+
+PonferradaLat <- 42.54811231971199
+PonferradaLong <- -6.597454689916324
+
+SarriaLat <- 42.777517304932005
+SarriaLong <- -7.413656717067121
+
+SantiagoLat <- 42.88555802646954
+SantiagoLong <- -8.523559289899342
+
+SantiagoCathedralLat <- 42.88051766067628
+SantiagoCathedralLong <- -8.544459062897769
+
+najeraLat <- 42.41518571727236
+najeraLong <- -2.7342653273102417
+
+calzadaLat <- 42.44089270700817
+calzadaLong <- -2.9525016235960213
+
+beloradoLat <- 42.41958914931443
+beloradoLong <- -3.188306627956277
+
+sanjuandeortegaLat <- 42.37574310983867
+sanjuandeortegaLong <- -3.4359024417225346
+
+hontanasLat = 42.31271139905313
+hontanasLong = -4.044831121209889
+
+boadillaLat <- 42.25807861269066
+boadillaLong <- -4.346444486186042
+
+carrioncondesLat <- 42.33782498950543
+carrioncondesLong <- -4.6016265069559905
+
+templariosLat <- 42.36249858959254
+templariosLong <- -4.8905992952307775
+
+bercianosLat <- 42.3863995832578
+bercianosLong <- -5.146526825508516
+
+mulasLat <- 42.49721561257988
+mulasLong <- -5.415637963474257
+
+villadangosLat <- 42.51953279486428
+villadangosLong <- -5.765354980533717
+
+rabanalLat <- 42.48074479295968
+rabanalLong <- -6.28419417870296
+
+molinasecaLat <- 42.53736995266289
+molinasecaLong <- -6.519802874515314
+
+villafrancaLat <- 42.604573281713144
+villafrancaLong <- -6.806612831494416
+
+cebreiroLat <- 42.707755275994074
+cebreiroLong <- -7.046090101818447
+
+triacastelaLat <- 42.75529203442347
+triacastelaLong <- -7.235265232211591
+
+sarriaLat <- 42.77747684221717
+sarriaLong <- -7.413576584786306
+
+portomarinLat <- 42.80847380954628
+portomarinLong <- -7.614967919461615
+
+palasdeReiLat <- 42.87303757049406
+palasdeReiLong <- -7.868961813909375
+
+melideLat <- 42.91441691721295
+melideLong <- -8.018225067785762
+
+arzuaLat <- 42.92731979108971
+arzuaLong <- -8.163986121672256
+
+predrouzoLat <- 42.906884839466386
+predrouzoLong <- -8.35914427187802
+
+```
+
+```{r pamploma, echo=FALSE}
+pamploma <- mapFunction(PamplomaHostelLat,PamplomaHostelLong)
+pamploma
+
+```
+
+## Puente la Reina
+
+### Albergue Gares, Cortes de Navarra, 11, 31100 Puente la Reina, Navarra, Spain
+[Albergue Gares](https://maps.app.goo.gl/7VxahNEQ7QnJA8Hr7)
+
+```{r puentelareina, echo=FALSE}
+puentelareina <- mapFunction(PuentelaReinaLat,PuentelaReinaLong)
+puentelareina
+
+```
+
+# Leg 1
+
+```{r leg1, echo=FALSE}
+leg1 <- doubleMarkerMapFunction(PamplomaHostelLat,PamplomaHostelLong,PuentelaReinaLat,PuentelaReinaLong)
+leg1
+
+```
+
+---
+
+# Leg 2 Puenta la Reina to Estella - 22 km
+
+### Puenta la Reina to Estella 22km (14 miles), rolling hills
+
+## Estella
+
+### Albergue de peregrinos de Estella La Rua, 50, 31200 Estella, Navarra, Spain
+[Albergue de peregrinos de Estella](https://maps.app.goo.gl/YV4csc71bs5R53zA7)
+
+```{r estella, echo=FALSE}
+estella <- mapFunction(EstellaLat,EstellaLong)
+estella
+
+```
+
+# Leg 2
+
+```{r leg2, echo=FALSE}
+leg2 <- doubleMarkerMapFunction(PuentelaReinaLat,PuentelaReinaLong,EstellaLat,EstellaLong)
+leg2
+
+```
+
+---
+
+## Leg 3 Estella to Logrono 50 km
+
+### Estella to Los Arcos 22 km (14 miles) rolling hills
+
+### Los Arcos to Logrono 28 km (17 miles) flat and rolling hills
+
+## Los Arcos
+
+### Public Albergue in Los Arcos, C. San Lázaro, 8, 31210 Los Arcos, Navarra, Spain
+[Albergue de peregrinos Isaac Santiago, Los Arcos](https://www.alberguescaminosantiago.com/albergues/albergue-de-peregrinos-isaac-santiago-los-arcos-navarra/)
+
+```{r losarcos, echo=FALSE}
+losarcos <- mapFunction(LosArcosLat,LosArcosLong)
+losarcos
+
+```
+
+## Logroño
+
+### Albergue Municipal de Logroño C. Ruavieja, 32, 26001 Logroño, La Rioja, Spain
+[Albergue Municipal de Logroño](https://maps.app.goo.gl/VcTVqBW3vrXhuBUu8)
+
+```{r logrono, echo=FALSE}
+logrono <- mapFunction(LogronoLat,LogronoLong)
+logrono
+
+```
+
+# Leg 3
+
+```{r leg3a, echo=FALSE}
+leg3 <- tripleMarkerMapFunction(EstellaLat,
+                                EstellaLong,
+                                LosArcosLat,
+                                LosArcosLong,
+                                LogronoLat,
+                                LogronoLong)
+leg3
+
+```
+
+---
+
+# Leg 4 Logrono to Burgos 125 km
+
+### Logrono to Nájera 30 km (19 miles) mostly flat
+
+### Nájera to Santo Domingo de la Calzada 21 km (13 miles) mostly flat
+
+### Santo Domingo de la Calzada to Belorado 23 km (14 miles) mostly flat
+
+### Belorado to San Juan de Ortega 24 km (15 miles) mostly flat
+
+### San Juan de Ortega to Buros 27 km (17 miles) mostly flat
+
+## Najera
+
+### Albergue municipal peregrinos de Najera, 26300, Spain, La Rioja, Nájera
+[Albergue municipal peregrinos de Najera](https://maps.app.goo.gl/xsajz2PkRjDiAP5T7)
+
+```{r najera, echo=FALSE}
+najera <- mapFunction(najeraLat,
+                      najeraLong)
+najera
+```
+
+## Santo Domingo de la Calzada
+
+### Albergue Cofradía del Santo, C. Mayor, 42, Santo Domingo de la Calzada, La Rioja, Spain
+[Albergue Cofradía del Santo](https://maps.app.goo.gl/XphZuaCcs5a6h8na9)
+
+```{r calzada, echo=FALSE}
+calzada <- mapFunction(calzadaLat,
+                       calzadaLong)
+calzada
+
+```
+
+## Belorado
+
+### Albergue Belorado El Corro, C. Corro, 09250 Belorado, Burgos, Spain
+[Albergue Belorado El Corro](https://maps.app.goo.gl/g6khEzKU3RtrihXV9)
+
+```{r belorado, echo=FALSE}
+belorado <- mapFunction(beloradoLat,
+                        beloradoLong)
+belorado
+
+```
+
+## San Juan de Ortega
+
+### El Descanso de San Juan, 09199 San Juan de Ortega, Burgos, Spain
+[El Descanso de San Juan](https://maps.app.goo.gl/ziX2CiJ9hXsupg6e7)
+
+```{r sanjuandeortega, echo=FALSE}
+sanjuandeortega <- mapFunction(sanjuandeortegaLat,
+                               sanjuandeortegaLong)
+sanjuandeortega
+
+```
+
+## Burgos
+
+### Albergue de peregrinos Casa del Cubo de Burgos, C. de Fernán González, 28, 09003 Burgos, Spain
+[Albergue de peregrinos Casa del Cubo de Burgos](https://maps.app.goo.gl/oXbdQF6WKKkK4CLJ6)
+
+
+```{r burgos, echo=FALSE}
+burgos <- mapFunction(BurgosLat,BurgosLong)
+burgos
+
+```
+
+
+```{r leg4, echo=FALSE}
+leg4 <- doubleMarkerMapFunction(LogronoLat,LogronoLong,BurgosLat,BurgosLong)
+leg4
+
+```
+
+# Leg 4
+
+```{r leg4completemap, echo=FALSE}
+leg4complete <- leaflet(width=1000)
+leg4complete <- addTiles(leg4complete)
+leg4complete <- addMarkers(leg4complete,
+                        lng=LogronoLong,
+                        lat=LogronoLat,
+                        #popup= "Starting Coord",
+                        label = "Logrono",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+leg4complete <- addMarkers(leg4complete,
+                        lng=najeraLong,
+                        lat=najeraLat,
+                        #popup= "Starting Coord",
+                        label = "Najera",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+leg4complete <- addMarkers(leg4complete,
+                        lng=calzadaLong,
+                        lat=calzadaLat,
+                        #popup= "Starting Coord",
+                        label = "Santo Domingo de la Calzada",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+leg4complete <- addMarkers(leg4complete,
+                        lng=beloradoLong,
+                        lat=beloradoLat,
+                        #popup= "Starting Coord",
+                        label = "Belorado",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+leg4complete <- addMarkers(leg4complete,
+                        lng=sanjuandeortegaLong,
+                        lat=sanjuandeortegaLat,
+                        #popup= "Starting Coord",
+                        label = "San Juan de Ortega",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+leg4complete <- addMarkers(leg4complete,
+                        lng=BurgosLong,
+                        lat=BurgosLat,
+                        #popup= "Starting Coord",
+                        label = "Burgos",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+leg4complete
+
+```
+
+---
+
+# Leg 5 Burgos to Leon 184 km
+
+### Burgos to Hontanas 32 km (20 miles) mostly flat
+### Hontanas to Boadilla del Camino 29 km (18 miles) mostly flat
+### Boadilla del Camino to Carrión de los Condes 26 km (16 miles) mostly flat
+### Carrión de los Condes to Terradillos de los Templarios 27 km (17 miles) mostly flat
+### Terradillos de los Templarios to Bercianos del Real Camino 24 km (15 miles) mostly flat
+### Bercianos del Real Camino to Mansilla de las Mulas 27 km (17 miles) mostly flat
+### Mansilla de las Mulas to León 19 km (12 miles) mostly flat
+
+## Hontanas
+
+### Albergue San Juan Municipal Hontanas, C. Real, 26, 09227 Hontanas, Burgos, Spain
+[Albergue San Juan Municipal Hontanas](https://maps.app.goo.gl/wi2C4yUeKryHaUCZ8)
+
+```{r hontanas, echo=FALSE}
+hontanas <- mapFunction(hontanasLat,hontanasLong)
+hontanas
+```
+
+
+## Boadilla del Camino
+
+### Albergue En El Camino, C. Francos, 3, 34468 Boadilla del Camino, Palencia, Spain
+[Albergue En El Camino](https://maps.app.goo.gl/CMttpVS2fnPipdHC6)
+
+```{r boadilla, echo=FALSE}
+boadilla <- mapFunction(boadillaLat,boadillaLong)
+boadilla
+```
+
+## Carrión de los Condes
+
+### Hostel Parish Santa Maria del Camino, C. Clérigo Pastor, 6, 34120 Carrión de los Condes, Palencia, Spain
+[Hostel Parish Santa Maria del Camino](https://maps.app.goo.gl/2KqBj53C5r5Bdw2X8)
+
+```{r carrioncondes, echo=FALSE}
+carrioncondes <- mapFunction(carrioncondesLat,carrioncondesLong)
+carrioncondes
+```
+
+## Terradillos de los Templarios
+
+### Hostel Jacques De Molay, Calle Iglesia, 10, 34349 Terradillos de los Templarios, Palencia, Spain
+[Hostel Jacques De Molay](https://maps.app.goo.gl/uPybQCtkNUkaJUh77)
+
+```{r templarios, echo=FALSE}
+templarios <- mapFunction(templariosLat,templariosLong)
+templarios
+
+```
+
+## Bercianos del Real Camino
+
+### Albergue Parroquial Casa Rectoral, C. la Iglesia, 41, 24325 Bercianos del Real Camino, León, Spain
+[Albergue Parroquial Casa Rectoral](https://maps.app.goo.gl/EJyRyQEf3xChyqHq9)
+
+```{r bercianos, echo=FALSE}
+bercianos <- mapFunction(bercianosLat,bercianosLong)
+bercianos
+```
+
+## Mansilla de las Mulas
+
+### El Albergue de Gaia, Av. Constitución, 28, 24210 Mansilla de las Mulas, León, Spain
+[El Albergue de Gaia](https://maps.app.goo.gl/u33ktpY6wuZGaBsF8)
+
+```{r mulas, echo=FALSE}
+mulas <- mapFunction(mulasLat,mulasLong)
+mulas
+```
+
+## León
+### Albergue at the Benedictine Sisters Convent, Pl. Sta. María del Camino, 7, 24003 León, Spain
+[Albergue at the Benedictine Sisters Convent](https://maps.app.goo.gl/2BGyvtbgDWWb42Mz8)
+
+```{r leon, echo=FALSE}
+leon <- mapFunction(LeonLat,LeonLong)
+leon
+```
+
+# Leg 5
+
+```{r leg5complete, echo=FALSE}
+leg5complete <- leaflet(width=1000)
+leg5complete <- addTiles(leg5complete)
+leg5complete <- addMarkers(leg5complete,
+                        lng=BurgosLong,
+                        lat=BurgosLat,
+                        #popup= "Starting Coord",
+                        label = "Burgos",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+leg5complete <- addMarkers(leg5complete,
+                        lng=hontanasLong,
+                        lat=hontanasLat,
+                        #popup= "Starting Coord",
+                        label = "Hontanas",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+leg5complete <- addMarkers(leg5complete,
+                        lng=boadillaLong,
+                        lat=boadillaLat,
+                        #popup= "Starting Coord",
+                        label = "Boadilla del Camino",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+leg5complete <- addMarkers(leg5complete,
+                        lng=carrioncondesLong,
+                        lat=carrioncondesLat,
+                        #popup= "Starting Coord",
+                        label = "Carrión de los Condes",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+leg5complete <- addMarkers(leg5complete,
+                        lng=templariosLong,
+                        lat=templariosLat,
+                        #popup= "Starting Coord",
+                        label = "Terradillos de los Templarios",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+leg5complete <- addMarkers(leg5complete,
+                        lng=bercianosLong,
+                        lat=bercianosLat,
+                        #popup= "Starting Coord",
+                        label = "Bercianos del Real Camino",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+
+leg5complete <- addMarkers(leg5complete,
+                        lng=mulasLong,
+                        lat=mulasLat,
+                        #popup= "Starting Coord",
+                        label = "Mansilla de las Mulas",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+leg5complete <- addMarkers(leg5complete,
+                        lng=LeonLong,
+                        lat=LeonLat,
+                        #popup= "Starting Coord",
+                        label = "Leon",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+leg5complete
+```
+
+---
+
+# Leg 6 Leon to Astorga - 50 km
+
+### Leon to Villadangos del Páramo 21 km (13 miles) mostly flat
+### Villadangos del Páramo to Astorga 29 km (18 miles) rolling hills
+
+## Villadangos del Páramo
+
+### Albergue de Peregrinos Municipal de "Villadangos del Páramo", Carr. de León - Astorga, 24392 Villadangos del Paramo, León, Spain
+[Albergue de Peregrinos Municipal de "Villadangos del Páramo"](https://maps.app.goo.gl/nRt8j1Az4JGB94C6A)
+
+```{r villadangos, echo=FALSE}
+villadangos <- mapFunction(villadangosLat,
+                           villadangosLong)
+villadangos
+```
+
+## Astorga
+
+### Albergue de peregrinos de Astorga, Plaza San Francisco, 3, 24700 Astorga, León, Spain
+[Albergue de peregrinos de Astorga](https://maps.app.goo.gl/TK9eHkPDEWx63TZcA)
+
+
+```{r astorga, echo=FALSE}
+astorga <- mapFunction(AstorgaLat,AstorgaLong)
+astorga
+```
+
+# Leg 6
+
+```{r leg6, echo=FALSE}
+leg6 <- tripleMarkerMapFunction(LeonLat,
+                                LeonLong,
+                                villadangosLat,
+                                villadangosLong,
+                                AstorgaLat,
+                                AstorgaLong)
+leg6
+
+```
+
+---
+
+# Leg 7 Astorga to Portomarín - 167 km
+
+### Astorga to Rabanal del Camino 20 km (12 miles) gradual climb
+### Rabanal del Camino to Molinaseca 25 km (16 miles) mountains
+### Molinaseca to Villafranca del Bierzo 32 km (20 miles) rolling hills
+### Villafranca del Bierzo to O Cebreiro 28 km (17 miles) mountains
+### O Cebreiro to Triacastela 21 km (13 miles) mountains
+### Triacastela to Sarria 19 km (12 miles) rolling hills
+### Sarria to Portomarín 22 km (14 miles) rolling hills
+
+## Rabanal del Camino
+
+### Albergue municipal de Rabanal del Camino, Pl. de Geronimo Moran Alonso, 24722 Rabanal del Camino, León, Spain
+[Albergue municipal de Rabanal del Camino](https://maps.app.goo.gl/6hgbGmumBLQqF3yCA)
+
+```{r rabanal, echo=FALSE}
+rabanal <- mapFunction(rabanalLat,
+                       rabanalLong)
+rabanal
+```
+
+## Molinaseca
+
+### Albergue Compostela, C. la Calleja, 3, 24413 Molinaseca, León, Spain
+[Albergue Compostela](https://maps.app.goo.gl/ZgVLJUaZsCnpDqoR7)
+
+```{r molinaseca, echo=FALSE}
+molinaseca <- mapFunction(molinasecaLat,
+                          molinasecaLong)
+molinaseca
+```
+
+## Villafranca del Bierzo
+
+### Public Albergue of Villafranca del Bierzo, 24500 Villafranca del Bierzo, León, Spain
+[Public Albergue of Villafranca del Bierzo](https://maps.app.goo.gl/7uj54KDyjdFpk1Cm9)
+
+```{r villafranca, echo=FALSE}
+villafranca <- mapFunction(villafrancaLat,
+                           villafrancaLong)
+villafranca
+```
+
+## O Cebreiro
+
+### Albergue Municipal de O Cebreiro, Lugar Cebreiro, 17, 27671 Pedrafita do Cebreiro, Lugo, Spain
+[Albergue Municipal de O Cebreiro](https://maps.app.goo.gl/Sa5yqxxWUJFJmEsp6)
+
+```{r cebreiro, echo=FALSE}
+cebreiro <- mapFunction(cebreiroLat,
+                        cebreiroLong)
+cebreiro
+```
+
+## Triacastela
+
+### Albergue Municipal de peregrinos de Triacastela, 27630 Triacastela, Lugo, Spain
+[Albergue Municipal de peregrinos de Triacastela](https://maps.app.goo.gl/ygcvpcxvbVh9bEtJ8)
+
+```{r triacastela, echo=FALSE}
+triacastela <- mapFunction(triacastelaLat,
+                           triacastelaLong)
+triacastela
+```
+
+## Sarria
+
+### Albergue municipal de peregrinos de Sarria, Rúa Maior, 79, 27600 Sarria, Lugo, Spain
+[Albergue municipal de peregrinos de Sarria]()
+
+```{r sarria, echo=FALSE}
+sarria <- mapFunction(SarriaLat,SarriaLong)
+sarria
+```
+
+## Portomarín
+
+### Albergue de peregrinos de Portomarín, Rúa Fraga Iribarne, 7, 27170 Portomarín, Lugo, Spain
+[Albergue de peregrinos de Portomarín](https://maps.app.goo.gl/2TkcRKcKkPye1tWE8)
+
+```{r portomarin, echo=FALSE}
+portomarin <- mapFunction(portomarinLat,
+                          portomarinLong)
+portomarin
+```
+
+<!-- ## Ponferrada -->
+
+<!-- ### Albergue Alda Pilgrim Ponferrada, Av. de la Puebla, 46, 24400 Ponferrada, León, Spain -->
+<!-- [Albergue Alda Pilgrim Ponferrada](https://maps.app.goo.gl/nurQEVhCrLZsidhj6) -->
+
+<!-- ```{r ponferrada, echo=FALSE} -->
+<!-- ponferrada <- mapFunction(PonferradaLat,PonferradaLong) -->
+<!-- ponferrada -->
+<!-- ``` -->
+
+# Leg 7
+
+```{r leg7, echo=FALSE}
+leg7complete <- leaflet(width=1000)
+leg7complete <- addTiles(leg7complete)
+
+leg7complete <- addMarkers(leg7complete,
+                        lng=AstorgaLong,
+                        lat=AstorgaLat,
+                        #popup= "Starting Coord",
+                        label = "Astorga",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+leg7complete <- addMarkers(leg7complete,
+                        lng=rabanalLong,
+                        lat=rabanalLat,
+                        #popup= "Starting Coord",
+                        label = "Rabanal",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+leg7complete <- addMarkers(leg7complete,
+                        lng=molinasecaLong,
+                        lat=molinasecaLat,
+                        #popup= "Starting Coord",
+                        label = "Molinaseca",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+leg7complete <- addMarkers(leg7complete,
+                        lng=villafrancaLong,
+                        lat=villafrancaLat,
+                        #popup= "Starting Coord",
+                        label = "Villafranca del Bierzo",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+leg7complete <- addMarkers(leg7complete,
+                        lng=cebreiroLong,
+                        lat=cebreiroLat,
+                        #popup= "Starting Coord",
+                        label = "O Cebreiro",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+leg7complete <- addMarkers(leg7complete,
+                        lng=triacastelaLong,
+                        lat=triacastelaLat,
+                        #popup= "Starting Coord",
+                        label = "Triacastela",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+leg7complete <- addMarkers(leg7complete,
+                        lng=sarriaLong,
+                        lat=sarriaLat,
+                        #popup= "Starting Coord",
+                        label = "Sarria",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+leg7complete <- addMarkers(leg7complete,
+                        lng=portomarinLong,
+                        lat=portomarinLat,
+                        #popup= "Starting Coord",
+                        label = "Portomarín",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+leg7complete
+
+```
+
+---
+
+# Leg 8 Portomarín to Santiago - 93 km
+
+### Portomarín to Palas de Rei 25 km (16 miles) rolling hills
+### Palas de Rei to Melide 15 km (9 miles) rolling hills
+### Melide to Arzúa 14 km (9 miles) rolling hills
+### Arzúa to Pedrouzo 19 km (12 miles) roling hills
+### Pedrouzo to Santiago de Compostela 20 km (12 miles) rolling hills
+
+## Palas de Rei
+
+### Albergue de peregrinos de Palas de Rei, Av. Compostela, 19, 27200 Palas de Rei, Lugo, Spain
+[Albergue de peregrinos de Palas de Rei](https://maps.app.goo.gl/KSRi8TuikQUsmNhh6)
+
+
+```{r palasdeRei, echo=FALSE}
+palasdeRei <- mapFunction(palasdeReiLat,
+                          palasdeReiLong)
+palasdeRei
+
+```
+
+## Melide
+
+### Albergue Municipal de Peregrinos de Melide, Rúa San Antonio, 15800 Melide, A Coruña, Spain
+[Albergue Municipal de Peregrinos de Melide](https://maps.app.goo.gl/nEaWwLsGDY3iNFUn9)
+
+
+```{r melide, echo=FALSE}
+melide <- mapFunction(melideLat,
+                      melideLong)
+melide
+
+```
+
+## Arzúa
+
+### Albergue del Peregrino, Rúa de Ramón Franco, 7, 15810 Arzúa, A Coruña, Spain
+[Albergue del Peregrino](https://maps.app.goo.gl/E1PHA5T8eQ8GMwzaA)
+
+
+```{r arzua, echo=FALSE}
+arzua <- mapFunction(arzuaLat,
+                     arzuaLong)
+arzua
+
+```
+
+## O Pedrouzo
+
+### HOSTEL AZUL CIELO, Av. Lugo, 28, 15821 O Pedrouzo, A Coruña, Spain
+[HOSTEL AZUL CIELO](https://maps.app.goo.gl/pdFs3RBcCoyUtHEE8)
+
+```{r predrouzo, echo=FALSE}
+predrouzo <- mapFunction(predrouzoLat,
+                         predrouzoLong)
+predrouzo
+
+```
+
+## Santiago
+
+### ALBERGUE FIN DEL CAMINO, Rúa de Moscova, 15707 Santiago de Compostela, A Coruña, Spain
+[Albergue Fin del Camino](https://maps.app.goo.gl/A4TUAgpbqAUpvhLN8)
+[ALBERGUE FIN DEL CAMINO](https://alberguefindelcamino.com/?lang=en)
+
+```{r santiagoAccomm, echo=FALSE}
+santiago <- mapFunction(SantiagoLat,SantiagoLong)
+santiago
+```
+
+# Leg 8
+
+```{r leg8, echo=FALSE}
+leg8complete <- leaflet(width=1000)
+leg8complete <- addTiles(leg8complete)
+
+leg8complete <- addMarkers(leg8complete,
+                           lng=portomarinLong,
+                           lat=portomarinLat,
+                           #popup= "Starting Coord",
+                           label = "Portomarín",
+                           #icon = homeIcon,
+                           labelOptions = labelOptions(noHide = TRUE)
+                           )
+
+leg8complete <- addMarkers(leg8complete,
+                           lng=palasdeReiLong,
+                           lat=palasdeReiLat,
+                           #popup= "Starting Coord",
+                           label = "Palas de Rei",
+                           #icon = homeIcon,
+                           labelOptions = labelOptions(noHide = TRUE)
+                           )
+
+leg8complete <- addMarkers(leg8complete,
+                           lng=melideLong,
+                           lat=melideLat,
+                           #popup= "Starting Coord",
+                           label = "Melide",
+                           #icon = homeIcon,
+                           labelOptions = labelOptions(noHide = TRUE)
+                           )
+
+leg8complete <- addMarkers(leg8complete,
+                           lng=arzuaLong,
+                           lat=arzuaLat,
+                           #popup= "Starting Coord",
+                           label = "Arzua",
+                           #icon = homeIcon,
+                           labelOptions = labelOptions(noHide = TRUE)
+                           )
+
+leg8complete <- addMarkers(leg8complete,
+                           lng=predrouzoLong,
+                           lat=predrouzoLat,
+                           #popup= "Starting Coord",
+                           label = "Predrouzo",
+                           #icon = homeIcon,
+                           labelOptions = labelOptions(noHide = TRUE)
+                           )
+
+leg8complete <- addMarkers(leg8complete,
+                           lng=SantiagoLong,
+                           lat=SantiagoLat,
+                           #popup= "Starting Coord",
+                           label = "Santiago",
+                           #icon = homeIcon,
+                           labelOptions = labelOptions(noHide = TRUE)
+                           )
+
+leg8complete
+```
+
+
+# Entire Route
+
+```{r mastermap, echo=FALSE}
+mastermap <- leaflet()
+mastermap <- addTiles(mastermap)
+mastermap <- addMarkers(mastermap,
+                        lng=PamplomaHostelLong,
+                        lat=PamplomaHostelLat,
+                        #popup= "Starting Coord",
+                        label = "Pamploma",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+mastermap <- addMarkers(mastermap,
+                        lng=PuentelaReinaLong,
+                        lat=PuentelaReinaLat,
+                        #popup= "Starting Coord",
+                        label = "Puente la Reina",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+mastermap <- addMarkers(mastermap,
+                        lng=EstellaLong,
+                        lat=EstellaLat,
+                        #popup= "Starting Coord",
+                        label = "Estella",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+mastermap <- addMarkers(mastermap,
+                        lng=LogronoLong,
+                        lat=LogronoLat,
+                        #popup= "Starting Coord",
+                        label = "Logrono",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+mastermap <- addMarkers(mastermap,
+                        lng=BurgosLong,
+                        lat=BurgosLat,
+                        #popup= "Starting Coord",
+                        label = "Burgos",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+mastermap <- addMarkers(mastermap,
+                        lng=LeonLong,
+                        lat=LeonLat,
+                        #popup= "Starting Coord",
+                        label = "Leon",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+mastermap <- addMarkers(mastermap,
+                        lng=AstorgaLong,
+                        lat=AstorgaLat,
+                        #popup= "Starting Coord",
+                        label = "Astorga",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+mastermap <- addMarkers(mastermap,
+                        lng=PonferradaLong,
+                        lat=PonferradaLat,
+                        #popup= "Starting Coord",
+                        label = "Ponferrada",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+mastermap <- addMarkers(mastermap,
+                        lng=SarriaLong,
+                        lat=SarriaLat,
+                        #popup= "Starting Coord",
+                        label = "Sarria",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+mastermap <- addMarkers(mastermap,
+                        lng=SantiagoCathedralLong,
+                        lat=SantiagoCathedralLat,
+                        #popup= "Starting Coord",
+                        label = "Santiago",
+                        #icon = homeIcon,
+                        labelOptions = labelOptions(noHide = TRUE))
+
+mastermap
+
+
+
+```
+
